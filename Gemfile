@@ -12,6 +12,9 @@ gem 'zeitwerk'
 gem 'bigdecimal', '1.4.2'
 gem 'rake'
 
+# fitness functions
+gem 'parser'
+
 group :development do
 end
 

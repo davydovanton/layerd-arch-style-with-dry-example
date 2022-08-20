@@ -1,7 +1,7 @@
 module InMemory
   module Transport
     class MatcherRequest
-      include Import[service: 'matcher.service']
+      include Import[service: 'contexts.matcher.service']
 
       def call
         puts 'Hello from in_memory matcher request'

@@ -1,7 +1,7 @@
 module InMemory
   module Transport
     class ShopRequest
-      include Import[service: 'shop.service']
+      include Import[service: 'contexts.shop.service']
 
       def call
         puts 'Hello from in_memory shop request'
