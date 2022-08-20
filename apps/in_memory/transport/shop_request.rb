@@ -2,6 +2,7 @@ module InMemory
   module Transport
     class ShopRequest
       include Import[service: 'contexts.shop.service']
+      # include Import[service: 'contexts.matcher.service'] # Exeption example for cross context calls
 
       def call
         puts 'Hello from in_memory shop request'

@@ -46,16 +46,16 @@ module FitnessFunctions
   end
 
   class CrossContextCallsChecker
-    def call(file_path, type:, context:, whitelist: [])
+    def call(file_path, whitelist: [])
       di_imports = ParseFileDependencies.new.call(file_path)
 
-      puts "Checking: '#{file_path}', type: '#{type}', context: '#{context}'"
+      puts "Checking: '#{file_path}'"
       puts "Dependencies for file: #{di_imports}"
 
       di_imports.each do |dependency|
         next if dependency.start_with?(*whitelist)
 
-        raise "Invalid dependency '#{dependency}' for '#{context}' context" unless dependency.include?(context.to_s)
+        raise "Invalid dependency '#{dependency}' for '#{file_path}'"
       end
     end
   end
@@ -66,25 +66,36 @@ end
 puts
 puts
 
-whitelist = %w[lib contexts]
-
+whitelist = %w[
+  lib
+  contexts.matcher.service
+]
 
 file_path = 'apps/in_memory/transport/matcher_request.rb'
-FitnessFunctions::CrossContextCallsChecker.new.call(file_path, type: :transport, context: :matcher, whitelist: whitelist)
+FitnessFunctions::CrossContextCallsChecker.new.call(file_path, whitelist: whitelist)
 
 puts
 puts '****'
 puts
+
+whitelist = %w[
+  lib
+  contexts.shop.service
+]
 
 file_path = 'apps/in_memory/transport/shop_request.rb'
-FitnessFunctions::CrossContextCallsChecker.new.call(file_path, type: :transport, context: :shop, whitelist: whitelist)
+FitnessFunctions::CrossContextCallsChecker.new.call(file_path, whitelist: whitelist)
 
 puts
 puts '****'
 puts
 
+whitelist = %w[
+  lib
+]
+
 file_path = 'contexts/shop/service.rb'
-FitnessFunctions::CrossContextCallsChecker.new.call(file_path, type: :business_logic, context: :shop, whitelist: ['lib'])
+FitnessFunctions::CrossContextCallsChecker.new.call(file_path, whitelist: whitelist)
 
 
 # [:send, [:const, nil, :Import],
