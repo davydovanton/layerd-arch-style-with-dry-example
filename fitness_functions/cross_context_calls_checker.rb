@@ -15,12 +15,12 @@ module FitnessFunctions
       sexp.select { |node| node[0] == :send && node[1] == nil && node[2] == :include }
     end
 
-    def find_di_import_node(import_sexps)
-      import_sexps.find { |node| Array(node[3][1])[2] == :Import }
+    def select_di_import_node(import_sexps)
+      import_sexps.select { |node| Array(node[3][1])[2] == :Import }
     end
 
-    def get_imported_dependencies(import_sexp)
-      import_sexp.nil? ? [] : import_sexp[3][3][1..-1].map{ |n| n[2][1] }
+    def get_imported_dependencies(import_sexps)
+      import_sexps.empty? ? [] : import_sexps.flat_map { |sexp| sexp[3][3][1..-1].map{ |n| n[2][1] } }
     end
 
     def find_dependencies(sexp)
@@ -31,7 +31,7 @@ module FitnessFunctions
 
         if sexp[0] == :begin 
           di_imports = get_imported_dependencies(
-            find_di_import_node(
+            select_di_import_node(
               select_include_nodes(sexp)
             )
           )
