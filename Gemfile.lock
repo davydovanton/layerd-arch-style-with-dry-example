@@ -104,6 +104,7 @@ DEPENDENCIES
   capybara
   dotenv (~> 2.4)
   dry-system (= 0.25)
+  parser
   rake
   rspec
   rubocop

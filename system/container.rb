@@ -19,6 +19,9 @@ class Container < Dry::System::Container
     # business logic
     config.component_dirs.add 'contexts' do |dir|
       dir.memoize = true
+
+      dir.namespaces.add 'matcher', key: 'contexts.matcher'
+      dir.namespaces.add 'shop', key: 'contexts.shop'
     end
 
     # simple transport
