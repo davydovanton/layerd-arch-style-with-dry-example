@@ -8,8 +8,16 @@ ruby '3.1.0'
 gem 'dry-system', '0.25'
 gem 'zeitwerk'
 
+# business logic section
+gem 'dry-monads', '1.3'
+gem 'dry-schema', '1.9'
+
+# persistance layer
+gem 'dry-types', '1.5'
+gem 'dry-struct', '1.0'
+
 # Other
-gem 'bigdecimal', '1.4.2'
+# gem 'bigdecimal', '1.4.2'
 gem 'rake'
 
 # fitness functions

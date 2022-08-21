@@ -3,6 +3,8 @@ require 'dry/system/container'
 require "dry/system/loader/autoloading"
 require "zeitwerk"
 
+require 'dry-struct'
+
 # General container class for project dependencies
 #
 # {http://dry-rb.org/gems/dry-system/ Dry-system documentation}
@@ -19,6 +21,11 @@ class Container < Dry::System::Container
     # business logic
     config.component_dirs.add 'contexts' do |dir|
       dir.memoize = true
+
+      dir.auto_register = proc do |component|
+        !component.identifier.include?("entities")
+        !component.identifier.include?("types")
+      end
 
       dir.namespaces.add 'matcher', key: 'contexts.matcher'
       dir.namespaces.add 'shop', key: 'contexts.shop'
