@@ -15,6 +15,7 @@ gem 'dry-schema', '1.9'
 # persistance layer
 gem 'dry-types', '1.5'
 gem 'dry-struct', '1.0'
+gem 'sqlite3'
 
 # Other
 # gem 'bigdecimal', '1.4.2'

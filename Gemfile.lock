@@ -118,6 +118,7 @@ GEM
       json
       simplecov
     simplecov_json_formatter (0.1.4)
+    sqlite3 (1.4.4)
     unicode-display_width (2.2.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
@@ -141,6 +142,7 @@ DEPENDENCIES
   rubocop-rspec
   simplecov
   simplecov-json
+  sqlite3
   zeitwerk
 
 RUBY VERSION
