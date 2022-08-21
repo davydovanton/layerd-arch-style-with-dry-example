@@ -17,9 +17,13 @@ Container.register_provider(:db) do |container|
         CREATE TABLE IF NOT EXISTS accounts(
           id      INTEGER PRIMARY KEY,
 
+          -- fields for shop context
           name    TEXT,
           email   TEXT,
           address TEXT
+
+          -- fields for matcher context
+          characteristic TEXT
         )
       }
     )
@@ -45,6 +49,17 @@ Container.register_provider(:db) do |container|
           count    INT,
 
           FOREIGN KEY(order_id) REFERENCES orders(id)
+        )
+      }
+    )
+
+    container['persistance.db'].execute(
+      %{
+        CREATE TABLE IF NOT EXISTS cat_toys(
+          id             INTEGER PRIMARY KEY,
+          title          TEXT,
+          characteristic INT,
+          archived       BOOLEAN NOT NULL CHECK (archived IN (0, 1))
         )
       }
     )
