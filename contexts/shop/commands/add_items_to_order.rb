@@ -1,7 +1,7 @@
 module Shop
   module Commands
     class AddItemsToOrder
-      include Dry::Monads[:result]
+      include Dry::Monads[:result, :try]
       include Dry::Monads::Do.for(:call)
 
       include Import[
