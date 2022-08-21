@@ -40,3 +40,17 @@ puts '=== Change order status ==='
 puts
 
 p payed_order = order_repo.change_status(id: filled_order.id, status: 'payed')
+
+
+puts
+puts '=== Working with cat toys ==='
+puts
+
+cat_toy_repo = Container['contexts.matcher.repositories.cat_toy']
+cat_toy_repo.create(title: 'Test title #1', characteristic: 123, archived: 0)
+cat_toy_repo.create(title: 'Test title #2', characteristic: 492, archived: 0)
+cat_toy_repo.create(title: 'Test title #3', characteristic: 928, archived: 1)
+cat_toy_repo.create(title: 'Test title #4', characteristic: 231, archived: 0)
+cat_toy_repo.create(title: 'Test title #5', characteristic: 857, archived: 1)
+
+pp cat_toy_repo.all_active

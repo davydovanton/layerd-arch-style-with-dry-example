@@ -87,7 +87,7 @@ file_path = 'apps/in_memory/transport/shop_request.rb'
 FitnessFunctions::CrossContextCallsChecker.new.call(file_path, whitelist: whitelist)
 
 puts
-puts '****'
+puts '====== Shop Context ======'
 puts
 
 whitelist = %w[
@@ -119,6 +119,36 @@ whitelist = %w[
 FitnessFunctions::CrossContextCallsChecker.new.call('contexts/shop/libs/address_correctness_checker.rb', whitelist: [])
 FitnessFunctions::CrossContextCallsChecker.new.call('contexts/shop/libs/payment_provider_processing.rb', whitelist: [])
 
+puts
+puts '====== Matcher Context ======'
+puts
+
+whitelist = %w[
+  contexts.matcher.repositories
+  contexts.matcher.libs
+]
+
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/matcher/commands/select_cat_toys_for_order.rb', whitelist: whitelist)
+
+puts
+puts '****'
+puts
+
+whitelist = %w[
+  persistance.db
+]
+
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/matcher/repositories/account.rb', whitelist: whitelist)
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/matcher/repositories/cat_toy.rb', whitelist: whitelist)
+
+puts
+puts '****'
+puts
+
+whitelist = %w[
+]
+
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/matcher/libs/nda_matcher_logic.rb', whitelist: [])
 # [:send, [:const, nil, :Import],
 # binding.irb
 # :end

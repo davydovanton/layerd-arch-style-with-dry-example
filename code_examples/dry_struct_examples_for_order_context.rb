@@ -2,9 +2,24 @@ require_relative '.././config/boot'
 
 puts
 
+puts '--------------- Matcher context -------------------'
+
+puts 'Matcher account:'
+
+p Matcher::Entities::Account.new(id: 1, characteristic: 'asdasdasdasd', name: 'Anton', email: 'test@test.com', address: 'Some address here')
+
+p Matcher::Entities::CatToy.new(id: 1, title: 'something', characteristic: 123)
+
+puts
+puts
+puts '--------------- Shop context -------------------'
+puts
+
+puts 'Shop account:'
+
 # p account = Shop::Entities::Account.new(id: 1, email: 'test@test.com', address: 'Some address here')
 # p account = Shop::Entities::Account.new(id: 1, name: nil, email: 'test@test.com', address: 'Some address here')
-p account = Shop::Entities::Account.new(id: 1, name: 'Anton', email: 'test@test.com', address: 'Some address here')
+p account = Shop::Entities::Account.new(id: 1, characteristic: 'asdasdasdasd', name: 'Anton', email: 'test@test.com', address: 'Some address here')
 
 puts
 
