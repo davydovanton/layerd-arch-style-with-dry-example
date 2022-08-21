@@ -91,12 +91,33 @@ puts '****'
 puts
 
 whitelist = %w[
-  lib
+  contexts.shop.repositories
+  contexts.shop.libs
 ]
 
-file_path = 'contexts/shop/service.rb'
-FitnessFunctions::CrossContextCallsChecker.new.call(file_path, whitelist: whitelist)
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/shop/commands/checkout.rb',           whitelist: whitelist)
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/shop/commands/add_items_to_order.rb', whitelist: whitelist)
 
+puts
+puts '****'
+puts
+
+whitelist = %w[
+  persistance.db
+]
+
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/shop/repositories/account.rb', whitelist: whitelist)
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/shop/repositories/order.rb',   whitelist: whitelist)
+
+puts
+puts '****'
+puts
+
+whitelist = %w[
+]
+
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/shop/libs/address_correctness_checker.rb', whitelist: [])
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/shop/libs/payment_provider_processing.rb', whitelist: [])
 
 # [:send, [:const, nil, :Import],
 # binding.irb

@@ -12,14 +12,15 @@ p items = [
   # Shop::Entities::Item.new(id: 11, title: 'T', count: 1), # will raise error
   # Shop::Entities::Item.new(id: 11, title: 'Test title for item #11', count: 0), # will raise error
 
-  Shop::Entities::Item.new(id: 11, title: 'Test title for item #11', count: 2),
-  Shop::Entities::Item.new(id: 12, title: 'Test title for item #12', count: 3),
-  Shop::Entities::Item.new(id: 13, title: 'Test title for item #13', count: 1)
+  Shop::Entities::Item.new(id: 11, title: 'Test title for item #11', count: 2, order_id: 2),
+  Shop::Entities::Item.new(id: 12, title: 'Test title for item #12', count: 3, order_id: 2),
+  Shop::Entities::Item.new(id: 13, title: 'Test title for item #13', count: 1, order_id: 2)
 ]
 
 puts
 
-order = Shop::Entities::Order.new(id: 2, account: account, items: items)
+# order = Shop::Entities::Order.new(id: 2, account_id: account.id, account: account, items: items, status: 'wrong')
+order = Shop::Entities::Order.new(id: 2, account_id: account.id, account: account, items: items)
 
 p order
 p order.account

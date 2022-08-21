@@ -8,10 +8,10 @@ module Shop
           INSERT INTO accounts (name, email, address) VALUES (?, ?, ?) RETURNING id
         }, name, email, address).first['id']
 
-        find(id)
+        find(id: id)
       end
 
-      def find(id)
+      def find(id:)
         map_raw_result_to_entity(
           db.execute("SELECT * FROM accounts WHERE id=?", id).first
         )

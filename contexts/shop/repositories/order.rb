@@ -20,6 +20,10 @@ module Shop
         map_raw_result_to_entity({ **raw_order, items: raw_items })
       end
 
+      def find_or_create(account_id:, order_id:)
+        find(id: order_id) || create(account_id: account_id)
+      end
+
       def add_item(order_id:, title:, count:)
         db.execute(%{
           INSERT INTO items (order_id, title, count) VALUES (?, ?, ?)
