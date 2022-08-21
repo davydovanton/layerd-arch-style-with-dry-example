@@ -1,5 +1,3 @@
-require 'dry-types'
-
 module Shop
   module Types
     include Dry.Types()
@@ -16,6 +14,8 @@ module Shop
     AccountAddress = String
 
     # Types for order
-    OrderStatuses = Types::String.default('open'.freeze).enum('open', 'payed', 'delivered')
+    OrderOpenStatus = Types.Value('open').default('open'.freeze)
+    OrderPayedStatus = Types.Value('payed').default('payed'.freeze)
+    OrderStatuses = (OrderOpenStatus | OrderPayedStatus).default('open'.freeze)
   end
 end

@@ -3,7 +3,20 @@ require 'dry/system/container'
 require "dry/system/loader/autoloading"
 require "zeitwerk"
 
+# --- Dry-rb requirements ---
+require 'dry-types'
+require 'dry/types'
+Dry::Types.load_extensions(:monads)
+
+require 'dry/schema'
+Dry::Schema.load_extensions(:monads)
+
 require 'dry-struct'
+
+require 'dry/monads'
+require 'dry/monads/do'
+# ---------------------------
+
 
 # General container class for project dependencies
 #
