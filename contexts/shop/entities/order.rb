@@ -10,6 +10,10 @@ module Shop
 
       attribute :items, Types.Array(Item).default([])
       attribute :status, Shop::Types::OrderStatuses
+
+      def payed?
+        self.status == Shop::Types::OrderPayedStatus[]
+      end
     end
   end
 end
