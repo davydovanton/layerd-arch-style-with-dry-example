@@ -13,3 +13,9 @@ FitnessFunctions call
 ```
 be ruby fitness_functions/cross_context_calls_checker.rb
 ```
+
+HTTP server call
+
+```
+be rackup apps/http/config.ru
+```
