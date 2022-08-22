@@ -135,6 +135,17 @@ puts '****'
 puts
 
 whitelist = %w[
+  contexts.matcher.repositories
+]
+
+FitnessFunctions::CrossContextCallsChecker.new.call('contexts/matcher/libs/nda_matcher_logic.rb', whitelist: whitelist)
+
+puts
+puts '****'
+puts
+
+
+whitelist = %w[
   persistance.db
 ]
 
@@ -142,13 +153,28 @@ FitnessFunctions::CrossContextCallsChecker.new.call('contexts/matcher/repositori
 FitnessFunctions::CrossContextCallsChecker.new.call('contexts/matcher/repositories/cat_toy.rb', whitelist: whitelist)
 
 puts
+puts '====== HTTP transport layer ======'
+puts
+
+whitelist = %w[
+  hanami.action.configuration
+  contexts.shop.commands
+]
+
+FitnessFunctions::CrossContextCallsChecker.new.call('apps/http/actions/commands/add_items_to_order.rb', whitelist: whitelist)
+FitnessFunctions::CrossContextCallsChecker.new.call('apps/http/actions/commands/checkout.rb', whitelist: whitelist)
+
+puts
 puts '****'
 puts
 
 whitelist = %w[
+  hanami.action.configuration
+  contexts.shop.queries
 ]
 
-FitnessFunctions::CrossContextCallsChecker.new.call('contexts/matcher/libs/nda_matcher_logic.rb', whitelist: [])
+FitnessFunctions::CrossContextCallsChecker.new.call('apps/http/actions/queries/show_order.rb', whitelist: whitelist)
+
 # [:send, [:const, nil, :Import],
 # binding.irb
 # :end
