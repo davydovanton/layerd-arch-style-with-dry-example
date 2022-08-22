@@ -51,6 +51,11 @@ class Container < Dry::System::Container
 
       dir.namespaces.add 'in_memory', key: 'in_memory'
       dir.namespaces.add 'http', key: 'http'
+      dir.namespaces.add 'kafka', key: 'kafka'
+      dir.namespaces.add 'cli', key: 'cli' # you need to load all as a classes, but I forgot hot to do it
+      dir.namespaces.add 'websockets', key: 'websockets'
+      dir.namespaces.add 'telegram_bot', key: 'telegram_bot'
+      # etc
     end
   end
 end
