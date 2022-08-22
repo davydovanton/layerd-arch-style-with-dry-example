@@ -18,6 +18,8 @@ require 'dry/monads'
 require 'dry/monads/do'
 # ---------------------------
 
+# INFORMATION: for more expamples of providers you can check this link:
+#   https://github.com/davydovanton/rubyjobs.dev/tree/master/system/boot
 
 # General container class for project dependencies
 #
@@ -30,6 +32,10 @@ class Container < Dry::System::Container
     # libraries
     config.component_dirs.add 'lib' do |dir|
       dir.memoize = true
+
+      dir.auto_register = proc do |component|
+        !component.identifier.include?("types")
+      end
     end
 
     # business logic
@@ -50,11 +56,14 @@ class Container < Dry::System::Container
       dir.memoize = true
 
       dir.namespaces.add 'in_memory', key: 'in_memory'
-      dir.namespaces.add 'http', key: 'http'
-      dir.namespaces.add 'kafka', key: 'kafka'
-      dir.namespaces.add 'cli', key: 'cli' # you need to load all as a classes, but I forgot hot to do it
-      dir.namespaces.add 'websockets', key: 'websockets'
-      dir.namespaces.add 'telegram_bot', key: 'telegram_bot'
+      dir.namespaces.add 'http', key: 'http' # if ENV['APP_TRANSPORT'] == 'http'
+      dir.namespaces.add 'kafka', key: 'kafka' # if ENV['APP_TRANSPORT'] == 'kafka'
+
+      # you need to load all as a classes, but I forgot hot to do it
+      dir.namespaces.add 'cli', key: 'cli' # if ENV['APP_TRANSPORT'] == 'cli'
+
+      dir.namespaces.add 'websockets', key: 'websockets' # if ENV['APP_TRANSPORT'] == 'websockets'
+      dir.namespaces.add 'telegram_bot', key: 'telegram_bot' # if ENV['APP_TRANSPORT'] == 'telegram_bot'
       # etc
     end
   end

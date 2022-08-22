@@ -1,7 +1,10 @@
 Container.register_provider(:db) do |container|
   prepare do
+    use :settings
+
     require 'sqlite3'
 
+    # db = SQLite3::Database.open (target[:settings].db_name)
     db = SQLite3::Database.open 'dry_course.db'
     db.results_as_hash = true
 

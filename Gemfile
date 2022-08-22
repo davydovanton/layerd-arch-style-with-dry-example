@@ -30,6 +30,10 @@ gem 'puma', '~> 3.12.4'
 # gem 'bigdecimal', '1.4.2'
 gem 'rake'
 
+# Monitoring and logging
+gem 'rollbar'
+gem 'semantic_logger'
+
 # fitness functions
 gem 'parser'
 
