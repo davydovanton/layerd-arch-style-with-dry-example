@@ -64,29 +64,6 @@ end
 # =========================================
 
 puts
-puts
-
-whitelist = %w[
-  lib
-  contexts.matcher.service
-]
-
-file_path = 'apps/in_memory/transport/matcher_request.rb'
-FitnessFunctions::CrossContextCallsChecker.new.call(file_path, whitelist: whitelist)
-
-puts
-puts '****'
-puts
-
-whitelist = %w[
-  lib
-  contexts.shop.service
-]
-
-file_path = 'apps/in_memory/transport/shop_request.rb'
-FitnessFunctions::CrossContextCallsChecker.new.call(file_path, whitelist: whitelist)
-
-puts
 puts '====== Shop Context ======'
 puts
 
