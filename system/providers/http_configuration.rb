@@ -1,3 +1,8 @@
+# also, you can use condition provider logic for specific transport layers
+# read more in this PR: https://github.com/dry-rb/dry-system/pull/218
+
+# Container.register_provider(:http_configuration, if: -> { ENV['APP_TRANSPORT' == 'http'}) do |container|
+
 Container.register_provider(:http_configuration) do |container|
   prepare do
     require 'hanami/action/configuration'
