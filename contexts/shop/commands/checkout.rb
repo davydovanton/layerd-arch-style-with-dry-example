@@ -52,10 +52,10 @@ module Shop
 
       def validate_order(account)
         return Failure([:order_empty, { order: order }]) if order.items.empty?
-        return Failure([:order_status_invalid, { order: order }]) if order.payed?
+        return Failure([:order_already_payed, { order: order }]) if order.payed?
 
         order_status_check_result = Types::OrderOpenStatus.try(order.status).to_monad
-        return Failure([:invalid_order_status, order_status_check_result.failure]) if order_status_check_result.failure?
+        return Failure([:order_status_invalid, order_status_check_result.failure]) if order_status_check_result.failure?
 
         # etc ...
       end

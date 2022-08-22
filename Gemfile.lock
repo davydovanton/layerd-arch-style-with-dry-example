@@ -1,3 +1,21 @@
+GIT
+  remote: https://github.com/hanami/controller.git
+  revision: 0147107371898f4927fa0bc5810b02bbef43dfd0
+  tag: v2.0.0.beta1
+  specs:
+    hanami-controller (2.0.0.beta1)
+      dry-configurable (~> 0.13, >= 0.13.0)
+      hanami-utils (~> 2.0.beta)
+      rack (~> 2.0)
+
+GIT
+  remote: https://github.com/hanami/validations.git
+  revision: b3303c05d050b58a6041a28788d91b08d8cf937e
+  tag: v2.0.0.beta1
+  specs:
+    hanami-validations (2.0.0.beta1)
+      dry-validation (~> 1.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -55,17 +73,39 @@ GEM
       dry-container (~> 0.10, >= 0.10.0)
       dry-core (~> 0.5, >= 0.5)
       dry-inflector (~> 0.1, >= 0.1.2)
+    dry-transformer (0.1.1)
     dry-types (1.5.0)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.3)
       dry-core (~> 0.5, >= 0.5)
       dry-inflector (~> 0.1, >= 0.1.2)
       dry-logic (~> 1.0, >= 1.0.2)
+    dry-validation (1.8.1)
+      concurrent-ruby (~> 1.0)
+      dry-container (~> 0.7, >= 0.7.1)
+      dry-core (~> 0.5, >= 0.5)
+      dry-initializer (~> 3.0)
+      dry-schema (~> 1.8, >= 1.8.0)
+    hanami-api (0.2.0)
+      hanami-router (~> 2.0.alpha)
+    hanami-router (2.0.0.beta2)
+      mustermann (~> 1.0)
+      mustermann-contrib (~> 1.0)
+      rack (~> 2.0)
+    hanami-utils (2.0.0.beta1)
+      concurrent-ruby (~> 1.0)
+      dry-transformer (~> 0.1)
+    hansi (0.2.1)
     ice_nine (0.11.2)
     json (2.6.2)
     matrix (0.4.2)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
+    mustermann (1.1.2)
+      ruby2_keywords (~> 0.0.1)
+    mustermann-contrib (1.1.2)
+      hansi (~> 0.2.0)
+      mustermann (= 1.1.2)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -73,6 +113,7 @@ GEM
     parser (3.1.2.1)
       ast (~> 2.4.1)
     public_suffix (5.0.0)
+    puma (3.12.6)
     racc (1.6.0)
     rack (2.2.4)
     rack-test (2.0.2)
@@ -109,6 +150,7 @@ GEM
     rubocop-rspec (2.12.1)
       rubocop (~> 1.31)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.5)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -135,7 +177,11 @@ DEPENDENCIES
   dry-struct (= 1.0)
   dry-system (= 0.25)
   dry-types (= 1.5)
+  hanami-api
+  hanami-controller!
+  hanami-validations!
   parser
+  puma (~> 3.12.4)
   rake
   rspec
   rubocop
