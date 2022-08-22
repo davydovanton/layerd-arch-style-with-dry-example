@@ -9,6 +9,7 @@ require 'dry/types'
 Dry::Types.load_extensions(:monads)
 
 require 'dry/schema'
+require 'dry-schema'
 Dry::Schema.load_extensions(:monads)
 
 require 'dry-struct'
