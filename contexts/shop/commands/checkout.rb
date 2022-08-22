@@ -8,7 +8,7 @@ module Shop
         account_repo: 'contexts.shop.repositories.account',
         order_repo: 'contexts.shop.repositories.order',
         address_correctness_checker: 'contexts.shop.libs.address_correctness_checker',
-        payment_provider_processing: 'contexts.shop.libs.payment_provider_processing'
+        payment_provider_processing: 'contexts.shop.libs.payment_provider_processing',
       ]
 
       def call(order_id:, account_id:)
@@ -52,7 +52,7 @@ module Shop
 
       def validate_order(account)
         return Failure([:order_empty, { order: order }]) if order.items.empty?
-        return Failure([:payed, { order: order }]) if order.payed?
+        return Failure([:order_status_invalid, { order: order }]) if order.payed?
 
         order_status_check_result = Types::OrderOpenStatus.try(order.status).to_monad
         return Failure([:invalid_order_status, order_status_check_result.failure]) if order_status_check_result.failure?
