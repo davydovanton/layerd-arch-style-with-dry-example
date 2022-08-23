@@ -19,6 +19,9 @@ end
 # Set up your auto-injection mixin
 Import = Dry::AutoInject(Container)
 
+# will also works
+# Import = Dry::AutoInject(Hash.new)
+
 class DependencyOne
   include Import[dependency: :dependency_two]
 
