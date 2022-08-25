@@ -28,7 +28,7 @@ private
     # some code
 
     { success: true, value: { step_2: :success, **payload } }
-    # { failure: true, error: 'Some error happen in step #2' }
+    { failure: true, error: 'Some error happen in step #2' }
   end
 
   def step_3(payload)
