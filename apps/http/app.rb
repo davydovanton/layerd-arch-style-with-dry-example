@@ -16,5 +16,15 @@ module HTTP
 
     post '/checkout', to: Container['http.actions.commands.checkout']
     post '/order/:id/add', to: Container['http.actions.commands.add_items_to_order']
+
+    # scope "api" do
+    #   scope "v1" do
+    #     post '/checkout', to: Container['http.actions.v1.commands.checkout']
+    #   end
+    #
+    #   scope "v2" do
+    #     post '/checkout', to: Container['http.actions.v2.commands.checkout']
+    #   end
+    # end
   end
 end
